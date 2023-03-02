@@ -1,16 +1,19 @@
 {
   "playlist": [
     {
+      "id": 1,
       "name": "2Default_cosmetics",
       "path": "/public/media/2Default_cosmetics.mp4",
       "duration": 0
     },
     {
+      "id": 2,
       "name": "LaborDay_land_HD",
       "path": "/public/media/LaborDay_land_HD.png",
       "duration": 5
     },
     {
+      "id": 3,
       "name": "Menu_land_HD",
       "path": "/public/media/Menu_land_HD.png",
       "duration": 10
