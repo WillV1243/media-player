@@ -7,7 +7,7 @@ function MediaPlayer({ playlist }) {
 
   useEffect(() => {
     console.log(playlist);
-  }, [])
+  }, [playlist]);
 
   return (
     <video ref={videoRef} className='video'>
