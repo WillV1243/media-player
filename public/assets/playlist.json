@@ -3,19 +3,22 @@
     {
       "id": 1,
       "name": "2Default_cosmetics",
-      "path": "/public/media/2Default_cosmetics.mp4",
-      "duration": 0
+      "path": "media/2Default_cosmetics.mp4",
+      "type": "video",
+      "duration": 8
     },
     {
       "id": 2,
       "name": "LaborDay_land_HD",
-      "path": "/public/media/LaborDay_land_HD.png",
+      "path": "media/LaborDay_land_HD.png",
+      "type": "img",
       "duration": 5
     },
     {
       "id": 3,
       "name": "Menu_land_HD",
-      "path": "/public/media/Menu_land_HD.png",
+      "path": "media/Menu_land_HD.png",
+      "type": "img",
       "duration": 10
     }
   ]

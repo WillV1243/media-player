@@ -4,8 +4,8 @@ import { useEffect, useState, createContext, useCallback } from 'react';
 // dexie
 import Dexie from 'dexie';
 
-// services
-import { getPlaylistFromAssets } from '../services/dataService';
+// utils
+import { getPlaylistFromAssets } from '../utils/getPlaylistFromAssets';
 
 export const IndexedDBContext = createContext();
 
@@ -23,7 +23,7 @@ export const IndexedDBProvider = ({ children }) => {
       .catch((error) => setError(error));
   }, [db, setError]);
 
-  const getPlaylist = useCallback(async () => {
+  const getPlaylistFromDB = useCallback(async () => {
     return await db.playlist.toArray().catch((error) => setError(error));
   }, [db, setError]);
 
@@ -55,7 +55,9 @@ export const IndexedDBProvider = ({ children }) => {
   }, []);
 
   return (
-    <IndexedDBContext.Provider value={{ error, loaded, notSupported, isInitialised, getPlaylist, getPlaylistFromJSON }}>
+    <IndexedDBContext.Provider
+      value={{ error, loaded, notSupported, isInitialised, getPlaylistFromDB, getPlaylistFromJSON }}
+    >
       {children}
     </IndexedDBContext.Provider>
   );

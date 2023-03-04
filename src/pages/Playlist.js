@@ -10,36 +10,36 @@ import { IndexedDBContext } from '../providers/IndexedDBProvider';
 const Playlist = () => {
   const [playlist, setPlaylist] = useState(null);
 
-  const {
-    error,
-    loaded,
-    notSupported,
-    isInitialised,
-    getPlaylist,
-    getPlaylistFromJSON
-  } = useContext(IndexedDBContext);
+  const { error, loaded, notSupported, isInitialised, getPlaylistFromDB, getPlaylistFromJSON } =
+    useContext(IndexedDBContext);
 
   useEffect(() => {
     if (loaded) {
       isInitialised()
-        .then((response) => {
-          if (response) {
-            return getPlaylist();
+        .then((initialised) => {
+          if (initialised) {
+            return getPlaylistFromDB();
           } else {
             return getPlaylistFromJSON();
           }
         })
         .then((playlist) => {
-          setPlaylist(playlist);
+          if (playlist) setPlaylist(playlist);
         });
     }
-  }, [loaded, isInitialised, getPlaylist, getPlaylistFromJSON]);
+  }, [loaded, isInitialised, getPlaylistFromDB, getPlaylistFromJSON]);
 
   if (notSupported) return <>IndexedDB not supported</>;
 
   if (error) return <>There has been an error with your thingy</>;
 
-  return playlist ? <MediaPlayer playlist={playlist} /> : <>Loading...</>;
+  if (!playlist) return <>Loading...</>;
+
+  return (
+    <>
+      <MediaPlayer playlist={playlist} />
+    </>
+  );
 };
 
 export default Playlist;
